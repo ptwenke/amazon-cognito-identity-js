@@ -52,7 +52,7 @@ export default class CookieStorage {
    * @returns {string} value - value that was deleted
    */
   removeItem(key) {
-    return Cookies.remove(key, { path: this.path, domain: this.domain, secure: true});
+    return Cookies.remove(key, { path: this.path, domain: this.domain});
   }
 
   /**

@@ -62,7 +62,7 @@ var CookieStorage = function () {
 
 
   CookieStorage.prototype.removeItem = function removeItem(key) {
-    return Cookies.remove(key, { path: this.path, domain: this.domain, secure: true });
+    return Cookies.remove(key, { path: this.path, domain: this.domain });
   };
 
   /**
