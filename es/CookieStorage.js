@@ -27,7 +27,7 @@ var CookieStorage = function () {
     } else {
       this.expires = 365;
     }
-    if(data.secure){
+    if(data.hasOwnProperty('secure')){
       this.secure = data.secure;
     }else{
       this.secure = true;
