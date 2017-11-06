@@ -23,6 +23,11 @@ export default class CookieStorage {
     } else {
       this.expires = 365;
     }
+    if(data.secure){
+      this.secure = data.secure;
+    }else{
+      this.secure = true;
+    }
   }
 
   /**
@@ -32,7 +37,7 @@ export default class CookieStorage {
    * @returns {string} value that was set
    */
   setItem(key, value) {
-    Cookies.set(key, value, {path: this.path, expires: this.expires, domain: this.domain});
+    Cookies.set(key, value, {path: this.path, expires: this.expires, domain: this.domain, secure: this.secure});
     return Cookies.get(key);
   }
 
@@ -52,7 +57,7 @@ export default class CookieStorage {
    * @returns {string} value - value that was deleted
    */
   removeItem(key) {
-    return Cookies.remove(key, { path: this.path, domain: this.domain});
+    return Cookies.remove(key, { path: this.path, domain: this.domain, secure: this.secure});
   }
 
   /**

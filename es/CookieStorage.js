@@ -27,6 +27,11 @@ var CookieStorage = function () {
     } else {
       this.expires = 365;
     }
+    if(data.secure){
+      this.secure = data.secure;
+    }else{
+      this.secure = true;
+    }
   }
 
   /**
@@ -38,7 +43,7 @@ var CookieStorage = function () {
 
 
   CookieStorage.prototype.setItem = function setItem(key, value) {
-    Cookies.set(key, value, { path: this.path, expires: this.expires, domain: this.domain });
+    Cookies.set(key, value, { path: this.path, expires: this.expires, domain: this.domain, secure: this.secure });
     return Cookies.get(key);
   };
 
@@ -62,7 +67,7 @@ var CookieStorage = function () {
 
 
   CookieStorage.prototype.removeItem = function removeItem(key) {
-    return Cookies.remove(key, { path: this.path, domain: this.domain });
+    return Cookies.remove(key, { path: this.path, domain: this.domain, secure: this.secure });
   };
 
   /**
